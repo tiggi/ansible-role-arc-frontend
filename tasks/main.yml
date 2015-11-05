@@ -3,7 +3,7 @@
 #
 
 - name: copy nordugrid.repo file
-  template: src=nordugrid.repo.j2 dest=/etc/yum.repo.d/nordugrid.repo owner=root mode=0644 
+  template: src=nordugrid.repo.j2 dest=/etc/yum.repos.d/nordugrid.repo owner=root mode=0644 
 
 - name: update all the things
   yum: name=* state=latest
