@@ -2,6 +2,12 @@
 # tasks file for ansible-role-arc-frontend
 #
 
+- name: copy nordugrid.repo file
+  template: src=nordugrid.repo.j2 dest=/etc/yum.repo.d/nordugrid.repo owner=root mode=0644 
+
+- name: update all the things
+  yum: name=* state=latest
+
 - name: install Nordugrid ARC packages
   yum: name={{ item }} state=present
   with_items: packages | default({})
