@@ -3,6 +3,7 @@
 #
 
 packages:
+  - nordugrid-release
   - nordugrid-arc
   - nordugrid-arc-ldap-infosys
   - nordugrid-arc-plugins-gfal
@@ -16,4 +17,3 @@ packages:
   - nordugrid-arc-aris
   - nordugrid-arc-gridftpd
   - ca-nordugrid-certrequest-config
-  - nordugrid-release
