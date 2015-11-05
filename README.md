@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Ansible role that installs and configures a Nordugrid ARC Grid Frontend 
 
 Requirements
 ------------
