@@ -4,16 +4,16 @@
 
 packages:
   - nordugrid-arc
-    nordugrid-arc-ldap-infosys
-    nordugrid-arc-plugins-gfal
-    nordugrid-arc-arex
-    nordugrid-arc-plugins-needed
-    nordugrid-arc-plugins-globus
-    nordugrid-arc-hed
-    nordugrid-arc-client
-    nordugrid-arc-gridmap-utils
-    nordugrid-arc-python
-    nordugrid-arc-aris
-    nordugrid-arc-gridftpd
-    ca-nordugrid-certrequest-config
-    nordugrid-release
+  - nordugrid-arc-ldap-infosys
+  - nordugrid-arc-plugins-gfal
+  - nordugrid-arc-arex
+  - nordugrid-arc-plugins-needed
+  - nordugrid-arc-plugins-globus
+  - nordugrid-arc-hed
+  - nordugrid-arc-client
+  - nordugrid-arc-gridmap-utils
+  - nordugrid-arc-python
+  - nordugrid-arc-aris
+  - nordugrid-arc-gridftpd
+  - ca-nordugrid-certrequest-config
+  - nordugrid-release
