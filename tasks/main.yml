@@ -1,2 +1,8 @@
 ---
 # tasks file for ansible-role-arc-frontend
+#
+
+- name: install Nordugrid ARC packages
+  yum: name={{ item }} state=present
+  with_items: packages | default({})
+
