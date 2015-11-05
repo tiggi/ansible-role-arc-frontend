@@ -1,0 +1,20 @@
+[nordugrid]
+name=NorduGrid - $basearch - base
+baseurl=http://download.nordugrid.org/repos/{{ release }}/centos/$releasever/$basearch/base
+enabled=1
+gpgcheck=1
+gpgkey=http://download.nordugrid.org/RPM-GPG-KEY-nordugrid
+
+[nordugrid-updates]
+name=NorduGrid - $basearch - updates
+baseurl=http://download.nordugrid.org/repos/{{ release }}/centos/$releasever/$basearch/updates
+enabled=1
+gpgcheck=1
+gpgkey=http://download.nordugrid.org/RPM-GPG-KEY-nordugrid
+
+[nordugrid-testing]
+name=NorduGrid - $basearch - testing
+baseurl=http://download.nordugrid.org/repos/{{ release }}/centos/$releasever/$basearch/testing
+enabled=0
+gpgcheck=1
+gpgkey=http://download.nordugrid.org/RPM-GPG-KEY-nordugrid
