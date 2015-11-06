@@ -15,3 +15,17 @@
 - name: copy arc.conf file
   template: backup=yes src=arc.conf.j2 dest=/etc/arc.conf owner=root mode=0644 
 
+- name: start and enable a-rex service
+  service: name=a-rex state=started enabled=yes
+
+- name: start and enable gridftpd service
+  service: name=gridftpd state=started enabled=yes
+
+- name: start and enable nordugrid-arc-bdii service
+  service: name=nordugrid-arc-bdii state=started enabled=yes
+
+- name: start and enable nordugrid-arc-slapd service
+  service: name=nordugrid-arc-slapd state=started enabled=yes
+
+- name: start and enable nordugrid-arc-inforeg service
+  service: name=nordugrid-arc-inforeg state=started enabled=yes
