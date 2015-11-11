@@ -5,9 +5,9 @@
 
 arc_frontend_release: "13.11"
 
-arc_frontend_services_to_start:
- - "a-rex"
- - "gridftpd"
- - "nordugrid-arc-bdii"
- - "nordugrid-arc-slapd"
- - "nordugrid-arc-inforeg"
+arc_frontend_packages:
+ - a-rex
+ - gridftpd
+ - nordugrid-arc-bdii
+ - nordugrid-arc-slapd
+ - nordugrid-arc-inforeg
