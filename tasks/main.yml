@@ -31,5 +31,5 @@
 
 - name: start and enable arc frontend services
   service: name={{ item }} state=started enabled=yes
-  with_items: arc_frontend_packages | default({})
-  when: arc_frontend_packages.0 != ""
+  with_items: arc_frontend_services | default({})
+  when: arc_frontend_services.0 != ""
