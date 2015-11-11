@@ -6,7 +6,7 @@
 arc_frontend_release: "13.11"
 
 arc_frontend_packages:
- - nordugrid-arc-a-rex
+ - nordugrid-arc-arex
  - nordugrid-arc-gridftpd
  - nordugrid-arc-gridmap-utils
  - nordugrid-arc-ldap-infosys
