@@ -10,15 +10,15 @@
 
 - name: install Nordugrid ARC packages
   yum: name={{ item }} state=present
-  with_items: packages | default({})
+  with_items: arc_frontend_packages | default({})
 
 - name: check if there's a nordugrid.repo.rpmnew
   stat: path=/etc/yum.repos.d/nordugrid.repo.rpmnew
-  register: rpmnew_stat
+  register: arc_frontend_rpmnew_stat
 
 - name: Replace old nordugrid.repo
   command: mv /etc/yum.repos.d/nordugrid.repo.rpmnew /etc/yum.repos.d/nordugrid.repo
-  when: rpmnew_stat.stat.exists
+  when: arc_frontend_rpmnew_stat.stat.exists
 
 - name: copy arc.conf file
   template: backup=yes src=arc.conf.j2 dest=/etc/arc.conf owner=root mode=0644 
