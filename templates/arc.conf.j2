@@ -108,9 +108,9 @@ debug="5"
 logsize="1000000 52"
 user="root"
 encryption="yes"
-unixgroup="ops simplepool /etc/grid-security/opspool/"
-unixgroup="users simplepool /etc/grid-security/fgipool/"
-unixgroup="novoms simplepool /etc/grid-security/fgipool/"
+unixgroup="ops simplepool {{ unixgroup_dir_ops }}"
+unixgroup="users simplepool {{ unixgroup_dir_fgi }}"
+unixgroup="novoms simplepool {{ unixgroup_dir_fgi }}"
 
 
 [gridftpd/jobs]

@@ -26,6 +26,71 @@
   command: mv /etc/yum.repos.d/nordugrid.repo.rpmnew /etc/yum.repos.d/nordugrid.repo
   when: arc_frontend_rpmnew_stat.stat.exists
 
+- name: Create Session dir 
+  file: path={{ sessiondir }} state=directory owner=root mode=0755
+
+- name: Create Runtime dir 
+  file: path={{ runtimedir }} state=directory owner=root mode=0755
+
+- name: Create Cache dir 
+  file: path={{ cachedir }} state=directory owner=root mode=0755
+
+- name: Create UnixGroup for OPS dir 
+  file: path={{ unixgroup_dir_ops }} state=directory owner=root mode=0755
+
+- name: Create UnixGroup for FGI dir 
+  file: path={{ unixgroup_dir_fgi }} state=directory owner=root mode=0755
+
+- name: Create gridops group
+  group: name={{ group_name_ops }} state=present
+  delegate_to: install
+
+- name: Create gridfgi group
+  group: name={{ group_name_fgi }} state=present
+  delegate_to: install
+          
+- name: Create OPS home dir 
+  file: path="{{ sessiondir }}/{{ group_name_ops }}" state=directory owner=root mode=0755
+
+- name: Create FGI home dir 
+  file: path="{{ sessiondir }}/{{ group_name_fgi }}" state=directory owner=root mode=0755
+
+- name: Create generic gridnull user
+  user: name=gridnull state=present home="{{ sessiondir }}" createhome=no
+  delegate_to: install
+
+- name: Create generic grid user
+  user: name=grid state=present home="{{ sessiondir }}/grid"
+  delegate_to: install
+
+- name: Create Grid users for OPS
+  user: name={{ item }} state=present home="{{ sessiondir }}/{{ group_name_ops }}" groups={{ group_name_ops }} createhome=no
+  with_sequence: start=0 end={{ ops_acct_nr }} format={{ group_name_ops }}%03d
+  delegate_to: install
+
+- name: Create Grid users for FGI
+  user: name={{ item }} state=present home="{{ sessiondir }}/{{ group_name_fgi }}" groups={{ group_name_fgi }} createhome=no
+  with_sequence: start=0 end={{ fgi_acct_nr }} format={{ group_name_fgi }}%03d
+  delegate_to: install
+
+- name: Create Slurm user account for OPS 1/2
+  command: /usr/bin/sacctmgr -i add account {{ group_name_ops }}
+  delegate_to: install
+
+- name: Create Slurm user account for OPS 2/2
+  command: /usr/bin/sacctmgr -i add user name={{ item }} account={{group_name_ops }}
+  with_sequence: start=0 end={{ ops_acct_nr }} format={{ group_name_ops }}%03d
+  delegate_to: install
+
+- name: Create Slurm user account for FGI 1/2
+  command: /usr/bin/sacctmgr -i add account {{ group_name_fgi }}
+  delegate_to: install
+
+- name: Create Slurm user account for FGI 2/2
+  command: /usr/bin/sacctmgr -i add user name={{ item }} account={{group_name_fgi }}
+  with_sequence: start=0 end={{ fgi_acct_nr }} format={{ group_name_fgi }}%03d
+  delegate_to: install
+
 - name: Template arc.conf file
   template: backup=yes src=arc.conf.j2 dest=/etc/arc.conf owner=root mode=0644 
 
