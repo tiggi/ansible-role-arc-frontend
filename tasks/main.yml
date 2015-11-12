@@ -38,6 +38,14 @@
 - name: Create UnixGroup for OPS dir 
   file: path={{ unixgroup_dir_ops }} state=directory owner=root mode=0755
 
+- name: Populate ops pool file
+  lineinfile: dest="{{ unixgroup_dir_ops }}/pool" line={{ item }}
+  with_sequence: start=0 end={{ ops_acct_nr }} format={{ group_name_ops }}%03d
+
+- name: Populate fgi pool file
+  lineinfile: dest="{{ unixgroup_dir_fgi }}/pool" line={{ item }}
+  with_sequence: start=0 end={{ fgi_acct_nr }} format={{ group_name_fgi }}%03d
+
 - name: Create UnixGroup for FGI dir 
   file: path={{ unixgroup_dir_fgi }} state=directory owner=root mode=0755
 
