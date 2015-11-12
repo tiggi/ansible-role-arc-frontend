@@ -81,6 +81,10 @@
   with_sequence: start=0 end={{ fgi_acct_nr }} format={{ group_name_fgi }}%03d
   delegate_to: install
 
+- name: Update NIS DB
+  command: /usr/bin/make -C /var/yp
+  delegate_to: install
+
 - name: Create Slurm user account for OPS 1/2
   command: /usr/bin/sacctmgr -i add account {{ group_name_ops }}
   delegate_to: install
