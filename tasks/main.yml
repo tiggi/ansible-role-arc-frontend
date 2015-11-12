@@ -76,20 +76,24 @@
 - name: Create Slurm user account for OPS 1/2
   command: /usr/bin/sacctmgr -i add account {{ group_name_ops }}
   delegate_to: install
+  ignore_errors: yes
 
 - name: Create Slurm user account for OPS 2/2
   command: /usr/bin/sacctmgr -i add user name={{ item }} account={{group_name_ops }}
   with_sequence: start=0 end={{ ops_acct_nr }} format={{ group_name_ops }}%03d
   delegate_to: install
+  ignore_errors: yes
 
 - name: Create Slurm user account for FGI 1/2
   command: /usr/bin/sacctmgr -i add account {{ group_name_fgi }}
   delegate_to: install
+  ignore_errors: yes
 
 - name: Create Slurm user account for FGI 2/2
   command: /usr/bin/sacctmgr -i add user name={{ item }} account={{group_name_fgi }}
   with_sequence: start=0 end={{ fgi_acct_nr }} format={{ group_name_fgi }}%03d
   delegate_to: install
+  ignore_errors: yes
 
 - name: Template arc.conf file
   template: backup=yes src=arc.conf.j2 dest=/etc/arc.conf owner=root mode=0644 
