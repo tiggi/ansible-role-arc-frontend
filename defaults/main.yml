@@ -22,3 +22,6 @@ arc_frontend_services:
  - nordugrid-arc-bdii
  - nordugrid-arc-slapd
  - nordugrid-arc-inforeg
+
+arc_frontend_nis: false
+add_slurm_accts: false
