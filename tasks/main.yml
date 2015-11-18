@@ -30,7 +30,7 @@
   file: path={{ griddir }} state=directory owner=root mode=0755
 
 - name: Create Session dir 
-  file: path={{ sessiondir }} state=directory owner=nobody mode=0755
+  file: path={{ sessiondir }} state=directory owner=nobody group=nobody mode=0755
 
 - name: Create Runtime dir 
   file: path={{ runtimedir }} state=directory owner=root mode=0755
