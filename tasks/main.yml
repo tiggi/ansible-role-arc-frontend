@@ -67,7 +67,7 @@
   file: path="{{ griddir }}/{{ group_name_fgi }}" state=directory owner=root mode=0755
 
 - name: Create generic gridnull user
-  user: name=gridnull state=present home="{{ griddir }}" createhome=no
+  user: name=gridnull state=present home="{{ griddir }}/gridnull" createhome=no
   delegate_to: install
 
 - name: Create generic grid user
