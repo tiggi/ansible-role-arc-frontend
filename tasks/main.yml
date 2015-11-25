@@ -143,3 +143,6 @@
   cron: name="copy runtime" minute=0 hour=6
         user="root" job="/usr/bin/cp -r -u /cvmfs/fgi.csc.fi/runtimes/sl6/current/* /scratch/grid/runtime/"
         cron_file=ansible_copyRuntime
+
+- name: run /usr/sbin/nordugridmap
+  command: /usr/sbin/nordugridmap
