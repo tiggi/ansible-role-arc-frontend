@@ -1,0 +1,10 @@
+---
+
+ - hosts: localhost
+   remote_user: root
+   vars:
+     - arc_frontend_nis: True
+     - add_slurm_accts: False
+     - arc_frontend_griddir: "/tmp/grid"
+   roles:
+     - ansible-role-arc-frontend
