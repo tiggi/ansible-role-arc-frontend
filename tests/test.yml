@@ -4,5 +4,9 @@
    remote_user: root
    vars:
      - arc_frontend_griddir: "/tmp/grid"
+     - arc_frontend_sessiondir: "{{ arc_frontend_griddir }}/session"
+     - arc_frontend_runtimedir: "{{ arc_frontend_griddir }}/runtime"
+     - shared_scratch: "/tmp"
+#
    roles:
      - ansible-role-arc-frontend
