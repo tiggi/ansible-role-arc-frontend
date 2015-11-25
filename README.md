@@ -11,6 +11,10 @@ Requirements
 Role Variables
 --------------
 
+There are many variables to be set.
+
+See tasks/main.yml , templates/arc.conf.j2 and defaults/main.yml 
+
  - arc_frontend_nis: false
  - add_slurm_accts: false
 

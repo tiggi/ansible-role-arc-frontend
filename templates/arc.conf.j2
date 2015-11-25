@@ -74,11 +74,11 @@ file="/etc/grid-security/grid-mapfile"
 [grid-manager]
 
 controldir="{{ controldir }}"
-sessiondir="{{ sessiondir }}"
-runtimedir="{{ runtimedir }}"
+sessiondir="{{ arc_frontend_sessiondir }}"
+runtimedir="{{ arc_frontend_runtimedir }}"
 shared_scratch="{{ shared_scratch }}"
 
-cachedir="{{ cachedir }}"
+cachedir="{{ arc_frontend_cachedir }}"
 cachesize="{{ cachesize }}"
 cachelifetime="{{ cachelifetime }}"
 

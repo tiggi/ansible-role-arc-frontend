@@ -27,5 +27,49 @@ arc_frontend_services:
 arc_frontend_nis: false
 add_slurm_accts: false
 
-# arc_frontend_griddir must be defined. Sessiondir and runtimedir are created within.
+##
+#
+
+slurm_wakeupperiod: "60"
+
+globus_tcp_port_range: "20000,25000"
+globus_udp_port_range: "20000,25000"
+
+x509_user_key: "/etc/grid-security/hostkey.pem"
+x509_user_cert: "/etc/grid-security/hostcert.pem"
+x509_cert_dir: "/etc/grid-security/certificates"
+
+gridmap: "/etc/grid-security/grid-mapfile"
+voms_processing: "strict"
+
+controldir: "/var/spool/nordugrid/jobstatus"
+
 #arc_frontend_griddir: "/scratch/grid"
+#arc_frontend_sessiondir: "{{ arc_frontend_griddir }}/session"
+#arc_frontend_runtimedir: "{{ arc_frontend_griddir }}/runtime"
+
+shared_scratch: "/scratch"
+
+arc_frontend_cachedir: "/scratch/cache"
+cachesize: "80 70"
+cachelifetime: "60d"
+
+logsize: "1000000 52"
+shared_filesystem: "yes"
+joblog: "/var/log/arc/gm-jobs.log"
+
+maxjobs: "10000 10000 80"
+wakeupperiod: "30"
+defaultttl: "604800 1209600"
+authplugin: "FINISHED timeout=30,onfailure=pass"
+arex_mount_point: "https://{{ fqdn }}:443"
+maxtransfertries: "10"
+
+unixgroup_dir_ops: "/etc/grid-security/opspool"
+unixgroup_dir_fgi: "/etc/grid-security/fgipool"
+
+group_name_ops: "ops"
+group_name_fgi: "fgi"
+
+ops_acct_nr: 40
+fgi_acct_nr: 200

@@ -30,17 +30,29 @@
   assert:
     that: "arc_frontend_griddir is defined"
 
+- name: arc_frontend_sessiondir must be defined
+  assert:
+    that: "arc_frontend_sessiondir is defined"
+
+- name: arc_frontend_runtimedir must be defined
+  assert:
+    that: "arc_frontend_runtimedir is defined"
+
+- name: arc_frontend_cachedir must be defined
+  assert:
+    that: "arc_frontend_cachedir is defined"
+
 - name: Create Grid dir 
   file: path={{ arc_frontend_griddir }} state=directory owner=root mode=0755
 
 - name: Create Session dir 
-  file: path={{ sessiondir }} state=directory owner=nobody group=nobody mode=0755
+  file: path={{ arc_frontend_sessiondir }} state=directory owner=nobody group=nobody mode=0755
 
 - name: Create Runtime dir 
-  file: path={{ runtimedir }} state=directory owner=root mode=0755
+  file: path={{ arc_frontend_runtimedir }} state=directory owner=root mode=0755
 
 - name: Create Cache dir 
-  file: path={{ cachedir }} state=directory owner=root mode=0755
+  file: path={{ arc_frontend_cachedir }} state=directory owner=root mode=0755
 
 - name: Create UnixGroup for OPS dir 
   file: path={{ unixgroup_dir_ops }} state=directory owner=root mode=0755
