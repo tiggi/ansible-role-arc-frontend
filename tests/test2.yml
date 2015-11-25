@@ -1,0 +1,9 @@
+---
+
+ - hosts: localhost
+   remote_user: root
+   vars:
+     - arc_frontend_nis: True
+     - add_slurm_accts: False
+   roles:
+     - ansible-role-arc-frontend
