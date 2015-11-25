@@ -15,6 +15,7 @@ arc_frontend_packages:
  - nordugrid-arc-hed
  - nordugrid-arc-python
  - nordugrid-arc-plugins-globus
+ - fetch-crl
 
 arc_frontend_services:
  - a-rex
