@@ -25,3 +25,6 @@ arc_frontend_services:
 
 arc_frontend_nis: false
 add_slurm_accts: false
+
+# arc_frontend_griddir must be defined. Sessiondir and runtimedir are created within.
+#arc_frontend_griddir: "/scratch/grid"

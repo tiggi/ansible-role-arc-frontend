@@ -26,8 +26,12 @@
   command: mv /etc/yum.repos.d/nordugrid.repo.rpmnew /etc/yum.repos.d/nordugrid.repo
   when: arc_frontend_rpmnew_stat.stat.exists
 
+- name: arc_frontend_griddir must be defined
+  assert:
+    that: "arc_frontend_griddir is defined"
+
 - name: Create Grid dir 
-  file: path={{ griddir }} state=directory owner=root mode=0755
+  file: path={{ arc_frontend_griddir }} state=directory owner=root mode=0755
 
 - name: Create Session dir 
   file: path={{ sessiondir }} state=directory owner=nobody group=nobody mode=0755
@@ -61,26 +65,26 @@
   delegate_to: install
           
 - name: Create OPS home dir 
-  file: path="{{ griddir }}/{{ group_name_ops }}" state=directory owner=root mode=0755
+  file: path="{{ arc_frontend_griddir }}/{{ group_name_ops }}" state=directory owner=root mode=0755
 
 - name: Create FGI home dir 
-  file: path="{{ griddir }}/{{ group_name_fgi }}" state=directory owner=root mode=0755
+  file: path="{{ arc_frontend_griddir }}/{{ group_name_fgi }}" state=directory owner=root mode=0755
 
 - name: Create generic gridnull user
-  user: name=gridnull state=present home="{{ griddir }}/gridnull" createhome=no
+  user: name=gridnull state=present home="{{ arc_frontend_griddir }}/gridnull" createhome=no
   delegate_to: install
 
 - name: Create generic grid user
-  user: name=grid state=present home="{{ griddir }}/grid"
+  user: name=grid state=present home="{{ arc_frontend_griddir }}/grid"
   delegate_to: install
 
 - name: Create Grid users for OPS
-  user: name={{ item }} state=present home="{{ griddir }}/{{ group_name_ops }}" groups={{ group_name_ops }} createhome=no
+  user: name={{ item }} state=present home="{{ arc_frontend_griddir }}/{{ group_name_ops }}" groups={{ group_name_ops }} createhome=no
   with_sequence: start=0 end={{ ops_acct_nr }} format={{ group_name_ops }}%03d
   delegate_to: install
 
 - name: Create Grid users for FGI
-  user: name={{ item }} state=present home="{{ griddir }}/{{ group_name_fgi }}" groups={{ group_name_fgi }} createhome=no
+  user: name={{ item }} state=present home="{{ arc_frontend_griddir }}/{{ group_name_fgi }}" groups={{ group_name_fgi }} createhome=no
   with_sequence: start=0 end={{ fgi_acct_nr }} format={{ group_name_fgi }}%03d
   delegate_to: install
 
