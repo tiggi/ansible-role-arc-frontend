@@ -134,6 +134,24 @@
 - name: Template arc.conf file
   template: backup=yes src=arc.conf.j2 dest=/etc/arc.conf owner=root mode=0644 
 
+- name: checks hostkey.pem exists on files/certificates/
+  stat: path=files/certificates/hostkey.pem
+  register: hostkey_st
+  delegate_to: 127.0.0.1
+
+- name: checks hostcert.pem exists on files/certificates/
+  stat: path=files/certificates/hostcert.pem
+  register: hostcert_st
+  delegate_to: 127.0.0.1
+
+- name: copy host certificate key file
+  copy: src=files/certificates/hostkey.pem dest=/etc/grid-security/ owner=root mode=0400
+  when: hostkey_st.exists
+
+- name: copy host certificate file
+  copy: src=files/certificates/hostcert.pem dest=/etc/grid-security/ owner=root mode=0644
+  when: hostcert_st.exists
+
 - name: start and enable arc frontend services
   service: name={{ item }} state=started enabled=yes
   with_items: arc_frontend_services | default({})
