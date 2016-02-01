@@ -3,7 +3,7 @@
 #
 #
 
-arc_frontend_release: "13.11"
+arc_frontend_release: "15.03"
 
 arc_frontend_packages:
  - nordugrid-arc-arex
