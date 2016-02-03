@@ -24,8 +24,14 @@ arc_frontend_services:
  - nordugrid-arc-slapd
  - nordugrid-arc-inforeg
 
+# Update NIS on install
 arc_frontend_nis: false
+
+# Create Slurm Accounts
 add_slurm_accts: false
+
+# Create Grid user accounts, homes and groups 
+init_griduser_accts: false
 
 ##
 #
