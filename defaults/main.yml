@@ -27,7 +27,7 @@ arc_frontend_services:
 # Update NIS on install
 arc_frontend_nis: false
 
-# Create Slurm Accounts
+# Create Slurm Accounts | This only works if init_griduser_accts is set as true as well, see bellow |
 add_slurm_accts: false
 
 # Create Grid user accounts, homes and groups 
