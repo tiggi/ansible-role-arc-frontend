@@ -17,13 +17,7 @@ gridmap="{{ gridmap }}"
 voms_processing="strict"
 voms_trust_chains = "
        /O=Grid/O=NorduGrid/CN=host/voms.fgi.csc.fi
-       /O=Grid/O=NorduGrid/CN=NorduGrid Certification Authority
-       ----NEXT CHAIN---
-       /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch
-       /DC=ch/DC=cern/CN=CERN Trusted Certification Authority
-       ----NEXT CHAIN---
-       /DC=ch/DC=cern/OU=computers/CN=voms.cern.ch
-       /DC=ch/DC=cern/CN=CERN Trusted Certification Authority
+       /O=Grid/O=NorduGrid/CN=NorduGrid Certification Authority 2015
        ----NEXT CHAIN---
        /DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch
        /DC=ch/DC=cern/CN=CERN Grid Certification Authority
@@ -59,16 +53,15 @@ require_issuerdn="yes"
 
 name="users"
 vo="fgi.csc.fi"
+
 [group/ops]
+
 name="ops"
 voms="ops * * *"
-
 
 [group/novoms]
 
 name="novoms"
-
-
 file="/etc/grid-security/grid-mapfile"
 
 [grid-manager]
