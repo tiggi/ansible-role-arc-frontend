@@ -16,7 +16,7 @@
 
 - name: install Nordugrid ARC packages
   yum: name={{ item }} state=present
-  with_items: arc_frontend_packages | default({})
+  with_items: "{{ arc_frontend_packages | default({}) }}"
 
 - name: check if there's a nordugrid.repo.rpmnew
   stat: path=/etc/yum.repos.d/nordugrid.repo.rpmnew
@@ -168,7 +168,7 @@
 
 - name: start and enable arc frontend services
   service: name={{ item }} state=started enabled=yes
-  with_items: arc_frontend_services | default({})
+  with_items: "{{ arc_frontend_services | default({}) }}"
   when: arc_frontend_services.0 != ""
 
 - name: Create cron job that copies runtime apps from CVMFS
