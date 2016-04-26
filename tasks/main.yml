@@ -150,13 +150,13 @@
   stat: path=files/certificates/hostkey.pem
   register: hostkey
   delegate_to: 127.0.0.1
-  sudo: false
+  become: false
 
 - name: checks hostcert.pem exists on files/certificates/
   stat: path=files/certificates/hostcert.pem
   register: hostcert
   delegate_to: 127.0.0.1
-  sudo: false
+  become: false
 
 - name: copy host certificate key file
   copy: src=files/certificates/hostkey.pem dest=/etc/grid-security/ owner=root mode=0400
