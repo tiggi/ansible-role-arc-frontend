@@ -16,7 +16,11 @@ arc_frontend_packages:
  - nordugrid-arc-python
  - nordugrid-arc-plugins-globus
  - fetch-crl
+# Nordugrid 2016 - ARC 5.1.1 New dependencies
  - net-tools
+ - sqlite
+ - libs3
+ - perl-Devel-NYTProf
 
 arc_frontend_services:
  - a-rex
