@@ -21,6 +21,7 @@ arc_frontend_packages:
  - sqlite
  - libs3
  - perl-Devel-NYTProf
+ - time
 
 arc_frontend_services:
  - a-rex

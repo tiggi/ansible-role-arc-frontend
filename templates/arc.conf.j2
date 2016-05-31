@@ -6,7 +6,6 @@
 
 hostname="{{ fqdn }}"
 lrms="SLURM"
-LRMSName="SLURM"
 slurm_wakeupperiod="{{ slurm_wakeupperiod }}"
 globus_tcp_port_range="{{ globus_tcp_port_range }}"
 globus_udp_port_range="{{ globus_udp_port_range }}"
@@ -15,17 +14,9 @@ x509_user_cert="{{ x509_user_cert }}"
 x509_cert_dir="{{ x509_cert_dir }}"
 gridmap="{{ gridmap }}"
 voms_processing="strict"
-voms_trust_chains = "
-       /O=Grid/O=NorduGrid/CN=host/voms.fgi.csc.fi
-       /O=Grid/O=NorduGrid/CN=NorduGrid Certification Authority 2015
-       ----NEXT CHAIN---
-       /DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch
-       /DC=ch/DC=cern/CN=CERN Grid Certification Authority
-       ----NEXT CHAIN---
-       /DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch
-       /DC=ch/DC=cern/CN=CERN Grid Certification Authority
- "
-
+t_chain="/O=Grid/O=NorduGrid/CN=host/voms.fgi.csc.fi" "/O=Grid/O=NorduGrid/CN=NorduGrid Certification Authority 2015"
+voms_trust_chain="/DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch" "/DC=ch/DC=cern/CN=CERN Grid Certification Authority"
+voms_trust_chain="/DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch" "/DC=ch/DC=cern/CN=CERN Grid Certification Authority"
 
 [vo]
 
@@ -36,7 +27,6 @@ source="vomss://voms2.cern.ch:8443/voms/ops"
 require_issuerdn="yes"
 mapped_unixid="gridnull"
 
-
 [vo]
 
 id="fgi_1"
@@ -45,9 +35,6 @@ file="/etc/grid-security/grid-mapfile"
 source="vomss://voms.fgi.csc.fi:8443/voms/fgi.csc.fi"
 mapped_unixid="gridnull"
 require_issuerdn="yes"
-
-
-[group]
 
 [group/users]
 
