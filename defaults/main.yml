@@ -85,3 +85,46 @@ group_name_fgi: "fgi"
 
 ops_acct_nr: 40
 fgi_acct_nr: 200
+
+arc_frontend_si00: "3940"
+arc_frontend_cores: "12"
+arc_frontend_hs06: "15.8"
+arc_frontend_sfp: "333"
+arc_frontend_processor_other_description: "Cores={{ arc_frontend_cores }},Benchmark={{ arc_frontend_hs06 }}-HEP-SPEC06"
+
+arc_frontend_benchmarks:
+ - "SPECINT2000  {{ arc_frontend_si00 }}"
+ - "HEPSPEC2006 {{ arc_frontend_hs06 }}"
+
+arc_frontend_cluster_defaultmemory: "1024"
+arc_frontend_cluster_benchmarks: |
+ benchmark="SPECINT2000  {{ arc_frontend_si00 }}"
+ benchmark="HEPSPEC2006 {{ arc_frontend_hs06 }}"
+
+arc_frontend_cluster_nodecpu: "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz"
+
+arc_frontend_queue_grid: |
+ [queue/grid]
+ 
+ name="grid"
+ comment="Grid queue"
+ nodecpu="{{ arc_frontend_cluster_nodecpu }}"
+ nodememory="128000"
+ benchmark="SPECFP2000 {{ arc_frontend_sfp }}"
+
+
+#####
+
+# define like below to customize your own settings in arc.conf
+#arc_frontend_settings: |
+#  [nordugridmap]
+#  gridmap_permissions="644"
+#  log_to_file="yes"
+#  logfile="/var/log/nordugridmap.log"
+#  [vo]
+#  id="vo_cms"
+#  vo="cms"
+#  source="vomss://voms2.cern.ch:8443/voms/cms"
+#  mapped_unixid="cmsuser"
+#  require_issuerdn="no"
+
