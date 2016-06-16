@@ -90,6 +90,7 @@ arc_frontend_si00: "3940"
 arc_frontend_cores: "12"
 arc_frontend_hs06: "15.8"
 arc_frontend_sfp: "333"
+arc_frontend_jobreport_options: "urbatch:100,archiving:/var/spool/nordugrid/jura,topic:/queue/global.accounting.cpu.central,gocdb_name:{{ gocDBName }},benchmark_type:HEPSPEC,benchmark_value:{{ arc_frontend_hs06 }},benchmark_description:HS06,use_ssl:true,vomsless_vo:{{ voName }}"
 arc_frontend_processor_other_description: "Cores={{ arc_frontend_cores }},Benchmark={{ arc_frontend_hs06 }}-HEP-SPEC06"
 
 arc_frontend_benchmarks:

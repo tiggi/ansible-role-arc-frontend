@@ -71,7 +71,7 @@ jobreport="APEL:https://mq.cro-ngi.hr:6162"
 jobreport_publisher="jura"
 jobreport_credentials="{{ x509_user_key }} {{ x509_user_cert }} {{ x509_cert_dir }}"
 jobreport_period="86400" 
-jobreport_options="urbatch:100,archiving:/var/spool/nordugrid/jura,topic:/queue/global.accounting.cpu.central,gocdb_name:{{ gocDBName }},benchmark_type:HEPSPEC,benchmark_value:{{ arc_frontend_hs06 }},benchmark_description:HS06,use_ssl:true,vomsless_vo:{{ voName }}"
+jobreport_options="{{ arc_frontend_jobreport_options }}"
 
 logsize="{{ logsize }}"
 shared_filesystem="{{ shared_filesystem }}"
