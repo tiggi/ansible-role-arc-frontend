@@ -1,6 +1,9 @@
-# {{ ansible_managed }}
-# FGCI arc.conf 
+# This file is managed by ansible
 
+{% if arc_frontend_settings is defined %}
+{{ arc_frontend_settings }}
+{% else %}
+# FGCI arc.conf 
 
 [common]
 
@@ -68,7 +71,7 @@ jobreport="APEL:https://mq.cro-ngi.hr:6162"
 jobreport_publisher="jura"
 jobreport_credentials="{{ x509_user_key }} {{ x509_user_cert }} {{ x509_cert_dir }}"
 jobreport_period="86400" 
-jobreport_options="urbatch:100,archiving:/var/spool/nordugrid/jura,topic:/queue/global.accounting.cpu.central,gocdb_name:{{ gocDBName }},benchmark_type:HEPSPEC,benchmark_value:15.8,benchmark_description:HS06,use_ssl:true,vomsless_vo:{{ voName }}"
+jobreport_options="{{ arc_frontend_jobreport_options }}"
 
 logsize="{{ logsize }}"
 shared_filesystem="{{ shared_filesystem }}"
@@ -125,8 +128,8 @@ ttl=190
 resource_location="{{ resource_location }}"
 resource_latitude="{{ resource_latitude }}"
 resource_longitude="{{ resource_longitude }}"
-cpu_scaling_reference_si00="3940"
-processor_other_description="Cores=12,Benchmark=15.8-HEP-SPEC06"
+cpu_scaling_reference_si00="{{ arc_frontend_si00 }}"
+processor_other_description="{{ arc_frontend_processor_other_description }}"
 glue_site_web="{{ instSiteURL }}"
 glue_site_unique_id="{{ gocDBName }}"
 provide_glue_site_info="false"
@@ -163,18 +166,12 @@ authorizedvo="ops"
 nodeaccess="outbound"
 clustersupport="{{ adminMailAddr }}"
 architecture="adotf"
-defaultmemory="1024"
+defaultmemory="{{ arc_frontend_cluster_defaultmemory }}"
 opsys="CentOS"
-benchmark="SPECINT2000  3940"
-benchmark="HEPSPEC2006 15.8"
-nodecpu="Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz"
+{{ arc_frontend_cluster_benchmarks }}
+nodecpu="{{ arc_frontend_cluster_nodecpu }}"
 
-[queue/grid]
+{{ arc_frontend_queue_grid }}
+{{ arc_frontend_cluster_benchmarks }}
 
-name="grid"
-comment="Grid queue"
-nodecpu="Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz"
-nodememory="128000"
-benchmark="SPECINT2000 3940"
-benchmark="HEPSPEC2006 15.8"
-benchmark="SPECFP2000 333"
+{% endif %}
