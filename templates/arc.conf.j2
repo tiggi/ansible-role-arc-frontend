@@ -116,6 +116,9 @@ infosys_glue12="enable"
 infosys_glue2_ldap="enable"
 ttl=200
 
+[infosys/site/{{ gocDBName }}]
+unique_id="{{ gocDBName }}"
+url="ldap://localhost:2135/mds-vo-name=resource,o=grid"
 
 [infosys/admindomain]
 
