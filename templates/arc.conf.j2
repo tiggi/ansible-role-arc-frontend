@@ -39,6 +39,8 @@ source="vomss://voms.fgi.csc.fi:8443/voms/fgi.csc.fi"
 mapped_unixid="gridnull"
 require_issuerdn="yes"
 
+[group]
+
 [group/users]
 
 name="users"
@@ -70,7 +72,7 @@ jobreport="https://pulse.fgi.csc.fi:6143/sgas"
 jobreport="APEL:https://mq.cro-ngi.hr:6162"
 jobreport_publisher="jura"
 jobreport_credentials="{{ x509_user_key }} {{ x509_user_cert }} {{ x509_cert_dir }}"
-jobreport_period="86400" 
+jobreport_period="3600" 
 jobreport_options="{{ arc_frontend_jobreport_options }}"
 
 logsize="{{ logsize }}"
@@ -114,7 +116,6 @@ provider_loglevel="2"
 infosys_nordugrid="enable"
 infosys_glue12="enable"
 infosys_glue2_ldap="enable"
-ttl=200
 
 [infosys/site/{{ gocDBName }}]
 unique_id="{{ gocDBName }}"
@@ -123,8 +124,11 @@ url="ldap://localhost:2135/mds-vo-name=resource,o=grid"
 [infosys/admindomain]
 
 name="{{ infoSysAdminDomain }}"
-ttl=190
-
+distributed="no"
+description="{{ infoSysAdminDomain }} grid resources"
+www="{{ instSiteURL }}"
+owner="{{ adminMailAddr }}"
+otherinfo="No other info"
 
 [infosys/glue12]
 
@@ -135,7 +139,7 @@ cpu_scaling_reference_si00="{{ arc_frontend_si00 }}"
 processor_other_description="{{ arc_frontend_processor_other_description }}"
 glue_site_web="{{ instSiteURL }}"
 glue_site_unique_id="{{ gocDBName }}"
-provide_glue_site_info="false"
+provide_glue_site_info="true"
 
 
 [infosys/cluster/registration/fgigiis2]
