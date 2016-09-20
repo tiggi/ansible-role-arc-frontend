@@ -129,3 +129,8 @@ arc_frontend_queue_grid: |
 #  mapped_unixid="cmsuser"
 #  require_issuerdn="no"
 
+arc_frontend_enable_fairshare: True
+arc_frontend_fairshare: 
+        - { group: 'local', share: '80000' }
+        - { group: '{{group_name_fgi}}', share: '20000' }
+        - { group: '{{group_name_ops}}', share: '100000' }

@@ -73,6 +73,14 @@
   when: add_slurm_accts and init_griduser_accts
   ignore_errors: yes
 
+# Slurm Fairshare. This sould go to Slurm role in the future. 
+
+- name: Setting Slurm Fairshare
+  command: /usr/bin/sacctmgr -i modify account name={{ item.group }} set fairshare={{ item.share }}
+  with_items: "{{arc_frontend_fairshare}}"
+  delegate_to: install
+  when: arc_frontend_enable_fairshare
+
 - name: checks hostkey.pem exists on files/certificates/
   stat: path=files/certificates/hostkey.pem
   register: hostkey
