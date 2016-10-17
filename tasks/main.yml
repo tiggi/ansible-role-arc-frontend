@@ -85,7 +85,7 @@
   when: arc_frontend_services.0 != ""
 
 - name: Syncronize runtime folder
-  syncronize: src=/cvmfs/fgi.csc.fi/runtimes/el7/ dest=/scratch/grid/runtime/ delete=yes recursive=yes
+  synchronize: src=/cvmfs/fgi.csc.fi/runtimes/el7/ dest=/scratch/grid/runtime/ delete=yes recursive=yes
 
 - name: Create cron job that copies runtime apps from CVMFS
   cron: name="copy runtime" minute=0 hour=6
