@@ -84,9 +84,6 @@
   with_items: "{{ arc_frontend_services | default({}) }}"
   when: arc_frontend_services.0 != ""
 
-- name: clean & copy runtime folder
-  shell: "rm -fr /scratch/grid/runtime/* && /usr/bin/cp -r /cvmfs/fgi.csc.fi/runtimes/el7/* /scratch/grid/runtime/"
-
 - name: Create cron job that copies runtime apps from CVMFS
   cron: name="copy runtime" minute=0 hour=6
         user="root" job="/usr/bin/cp -r -u /cvmfs/fgi.csc.fi/runtimes/el7/* /scratch/grid/runtime/"
