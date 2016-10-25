@@ -86,8 +86,9 @@
 
 - name: Create cron job that copies runtime apps from CVMFS
   cron: name="copy runtime" minute=0 hour=6
-        user="root" job="/usr/bin/cp -r -u /cvmfs/fgi.csc.fi/runtimes/el7/* /scratch/grid/runtime/"
+        user="root" job="/usr/bin/cp -r -u {{ arc_frontend_runtimedir_cvmfs }}/* {{ arc_frontend_runtimedir }}"
         cron_file=ansible_copyRuntime
+  when: arc_frontend_runtimedir_cvmfs.0 != "" and arc_frontend_runtimedir != ""
 
 - name: run /usr/sbin/nordugridmap
   command: /usr/sbin/nordugridmap

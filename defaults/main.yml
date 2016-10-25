@@ -56,9 +56,10 @@ voms_processing: "strict"
 
 controldir: "/var/spool/nordugrid/jobstatus"
 
-#arc_frontend_griddir: "/scratch/grid"
-#arc_frontend_sessiondir: "{{ arc_frontend_griddir }}/session"
-#arc_frontend_runtimedir: "{{ arc_frontend_griddir }}/runtime"
+arc_frontend_griddir: "/scratch/grid"
+arc_frontend_sessiondir: "{{ arc_frontend_griddir }}/session"
+arc_frontend_runtimedir: "{{ arc_frontend_griddir }}/runtime"
+arc_frontend_runtimedir_cvmfs: "/cvmfs/fgi.csc.fi/runtimes/el7"
 
 shared_scratch: "/scratch"
 
