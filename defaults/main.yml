@@ -30,6 +30,9 @@ arc_frontend_services:
  - nordugrid-arc-slapd
  - nordugrid-arc-inforeg
 
+arc_frontend_services:
+ - arched
+
 # Update NIS on install
 arc_frontend_nis: false
 

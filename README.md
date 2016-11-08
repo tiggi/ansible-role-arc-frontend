@@ -18,6 +18,12 @@ See tasks/main.yml , templates/arc.conf.j2 and defaults/main.yml
  - arc_frontend_nis: false
  - add_slurm_accts: false
 
+These services are set to disabled:
+<pre>
+arc_frontend_services:
+ - arched
+</pre>
+
 Dependencies
 ------------
 
@@ -40,4 +46,3 @@ MIT
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
