@@ -98,3 +98,14 @@
 - name: run /usr/sbin/nordugridmap
   command: /usr/sbin/nordugridmap
 
+- name: Check perfdata directory permissions
+  stat:
+        path: /var/log/arc/perfdata
+  register: st
+
+- name: Fixup perfdata directory permissions
+  file: 
+        path: /var/log/arc/perfdata
+        mode: 0755  
+  when: st.stat.isdir is defined and st.stat.isdir and st.stat.mode == 0777
+
